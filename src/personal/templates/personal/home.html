@@ -2,13 +2,23 @@
 
 
 {% block content %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Accessible Opportunity</h1>
+	<p 
+      class="fs-5 text-muted">Our team is funded by UNT to set up an application allowing persons of all disabilities to find jobs and/or research opportunities. This will be implemented through a website where employers can browse potential employee profiles, and users can network by making posts, sending messages, and updating their profiles/documents. This will function similarly to a LinkedIn, but with an accessibility overhaul.
+  	</p>
+</div>
 
+<div class="container">
+	<div class="d-flex flex-column"> <!-- Flex box -->
+		<h4>Registered users:</h4>
+		{% for account in accounts %}
+			<p>{{account}}</p>
+		{% endfor %}
+	</div>
 
-	
-<h3>Registered users:</h3>
-{% for account in accounts %}
-	<p>{{account}}</p>
-{% endfor %}
+</div>	
+
 
 	
 
