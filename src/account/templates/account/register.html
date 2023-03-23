@@ -22,6 +22,8 @@
   z-index: 2;
 }
 
+
+
 .form-signin input[type="email"] {
   margin-bottom: 10px;
   border-bottom-right-radius: 0;
@@ -56,6 +58,10 @@
     <input type="password" name="password1" class="form-control" id="inputPassword1" placeholder="Password" required>
 
     <input type="password" name="password2" class="form-control" id="inputPassword2" placeholder="Confirm Password" required>
+
+    <input type="checkbox" id="is_poster" name="is_poster" value = "poster">
+    <label for ="is_poster"> Sign up as a poster</label><br>
+
       
 {% for field in registration_form %}
 	<p>
