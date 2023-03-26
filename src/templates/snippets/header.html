@@ -30,18 +30,14 @@
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
       	{% if request.user.is_authenticated %}
-      	<a class="me-3 py-2 text-dark text-decoration-none"href="{% url 'about' %}">About</a>
-				<a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'home' %}">Home</a>
+		<a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'home' %}">Home</a>
         <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'account' %}">Account</a>
         <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'logout' %}">Logout</a>
         
 		{% else %}
-			<a class="me-3 py-2 text-dark text-decoration-none"href="{% url 'about' %}">About</a>
 			<a class="me-3 py-2 text-dark text-decoration-none"href="{% url 'home' %}">Home</a> 
 			<a class="me-3 py-2 text-dark text-decoration-none"href="{% url 'login' %}">Login</a> 
 			<a class="me-3 btn btn-outline-primary" href="{% url 'register' %}">Register</a>
-
-
       	{% endif %}
         
       </nav>

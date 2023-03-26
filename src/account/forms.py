@@ -9,7 +9,7 @@ class RegistrationForm(UserCreationForm):
 
 	class Meta:
 		model = Account
-		fields = ("email", "username", "password1", "password2")
+		fields = ("is_poster", "email", "username", "password1", "password2")
 
 class AccountAuthenticationForm(forms.ModelForm):
 
