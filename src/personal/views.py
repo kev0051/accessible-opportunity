@@ -23,12 +23,4 @@ def home_screen_view(request):
 	#questions = Question.objects.all()
 	#context['questions'] = questions
 
-	user = request.user
-	if user.is_authenticated:
-		if user.is_poster:
-			return render(request, "personal/posterhome.html", context)
-		else:
-			return render(request, "personal/applicanthome.html", context)
-	else:
-		return render(request, "personal/home.html", context)
-	
+	return render(request, "personal/home.html", context)
