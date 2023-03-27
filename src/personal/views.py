@@ -23,3 +23,5 @@ def home_screen_view(request):
 def about_screen_view(request):
     context = {}
     return render(request, "personal/about.html", context)
+
+
