@@ -80,11 +80,11 @@
 
 </form>
 
-{% if request.user.is_poster %}
+
 <div class="d-flex flex column">
 	<a class="m-auto" href="{% url 'password_change_complete' %}">Change password</a>
 </div>
-
+{% if request.user.is_poster %}
 <div class="container mt-4 p-4">
 	<div class="row">
 		<div class="blog-posts">
