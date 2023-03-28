@@ -45,7 +45,7 @@
 {% if request.user.is_authenticated and request.resolver_match.url_name == 'home' %}
 <div class="search-bar mt-sm-8">
     <form method="get">
-        <input class="form-control"  type="text" name="q" id="id_q" placeholder="Search...">
+        <input class="form-control"  type="text" name="q" id="id_q" placeholder="Search..." autocomplete="off">
     </form>
 </div>
 
