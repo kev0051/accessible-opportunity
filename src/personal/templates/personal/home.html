@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal">Accessible Opportunity</h1>
-	<p 
-      class="fs-5 text-muted">Our team is funded by UNT to set up an application allowing persons of all disabilities to find jobs and/or research opportunities. This will be implemented through a website where employers can browse potential employee profiles, and users can network by making posts, sending messages, and updating their profiles/documents. This will function similarly to a LinkedIn, but with an accessibility overhaul.
-  	</p>
+<div class="d-flex align-items-center" style="height: 70vh;">
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-3 fw-normal" style="font-weight: bold;">Find Where You Fit In</h1>
+        <p class="fs-5 text-muted text-center">Accessible Opportunity connects disabled individuals to research teams in need of participants for projects dedicated towards designing a better future.</p>
+        <div class="d-flex justify-content-center">
+            <a class="me-3 btn btn-outline-primary text-center" href="{% url 'about' %}">Learn More</a>
+        </div>
+    </div>
 </div>
-
+<!--
 <div class="container">
-	<div class="d-flex flex-column"> <!-- Flex box -->
+	<div class="d-flex flex-column"> 
 		<h4>Registered users:</h4>
 		{% for account in accounts %}
 			<p>{{account}}</p>
@@ -18,5 +20,6 @@
 	</div>
 
 </div>	
-
+-->
 {% endblock content %}
+
