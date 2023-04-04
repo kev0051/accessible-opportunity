@@ -22,6 +22,7 @@ def create_blog_view(request):
 		obj.author = author
 		obj.save()
 		form = CreateBlogPostForm()
+		return redirect("home")
 
 	context['form'] = form
 
