@@ -26,6 +26,12 @@
 		<div class="col-lg-7 offset-lg-1">
 			<form class="create-form" method="post" enctype="multipart/form-data">{% csrf_token %}
 
+				<!-- Image -->
+				<div class="form-group">
+					<label for="id_image">Image</label>
+					<input type="file" name="image" id="id_image" accept="image/*" required>
+				</div>
+
 				<!-- title -->
 				<div class="form-group">
 					<label for="id_title">Title</label>
@@ -38,10 +44,16 @@
 					<textarea class="form-control" rows="10" type="text" name="body" id="id_body" placeholder="This blog is about..." required></textarea>
 				</div>
 
-				<!-- Image -->
+				<!-- Disability Tag -->
 				<div class="form-group">
-					<label for="id_image">Image</label>
-					<input type="file" name="image" id="id_image" accept="image/*" required>
+					<label for="id_disability">Select a category:</label>
+					<select name="disability" id="disability" required>
+					<option value='V'>Visual</option>
+					<option value='A'>Auditory</option>
+					<option value='P'>Physical</option>
+					<option value='I'>Intellectual</option>
+					<option value='O'>Other</option>
+					</select>
 				</div>
 
 				<!-- Submit btn -->
