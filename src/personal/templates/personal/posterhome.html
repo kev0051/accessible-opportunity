@@ -60,9 +60,11 @@
 			<!-- Blog posts-->
 			{% if blog_posts %}
 				{% for post in blog_posts %}
+					{% if post.author.id == user.id %}
 					<div class="blog-post-container">
 						{% include 'blog/snippets/blog_post_snippet.html' with blog_post=post %}
 					</div>
+					{% endif %}
 				{% endfor %}
 			{% else %}
 				<div class="blog-post-container">
