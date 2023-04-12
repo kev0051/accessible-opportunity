@@ -86,3 +86,17 @@ def get_blog_queryset(query=None):
 
 	return list(set(queryset))	
 
+def delete_blog_view(request, slug):
+    # Get the blog post object
+    blog_post = get_object_or_404(BlogPost, slug=slug)
+
+    # Check if the user is the author of the blog post
+    if request.user == blog_post.author:
+        # Delete the blog post
+        blog_post.delete()
+        # Redirect to the blog post list page
+        return redirect("home")
+    else:
+        # Redirect to the blog post detail page
+        return redirect('detail_blog_view', slug=slug)
+

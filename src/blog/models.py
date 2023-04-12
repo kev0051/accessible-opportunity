@@ -29,7 +29,7 @@ class BlogPost(models.Model):
 							('V', 'Visual'),
 							('A', 'Auditory'),
 							('P', 'Physical'),
-							('I', 'Intellectual'),
+							('C', 'Cognitive'),
 							('O', 'Other')
 						  )
 	disability			= models.CharField(default='O', max_length=1, choices=DIS_TYPE)
