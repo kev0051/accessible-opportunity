@@ -19,6 +19,11 @@
 	.submit-button{
 		max-width: 200px;
 	}
+	.cancel-button:hover {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #fff;
+    }
 </style>
 
 <div class="container">
@@ -57,10 +62,17 @@
 				</div>
 
 				<!-- Submit btn -->
-				<button class="submit-button btn btn-lg btn-primary btn-block" type="submit">POST</button>
+				<div class="form-group d-inline-block">
+				<button class="submit-button btn btn-lg btn-primary btn-block" type="submit">Create Post</button>
+				</div>
+
+				<div class="form-group d-inline-block">
+                  <a class="me-3 btn btn-outline-primary btn-lg text-center cancel-button" href="{% url 'home' %}">Cancel</a>
+                </div>
 			</form>
 		</div>
 	</div>
 </div>
 
 {% endblock content %}
+
