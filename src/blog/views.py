@@ -60,6 +60,7 @@ def edit_blog_view(request, slug):
 			obj.save()
 			context['success_message'] = "Updated"
 			blog_post = obj
+			return redirect("home")
 
 	form = UpdateBlogPostForm(
 			initial = {
