@@ -18,7 +18,7 @@ def upload_location(instance, filename, **kwargs):
 
 class BlogPost(models.Model):
 	is_active			= models.BooleanField(default=True) # If true, can be discovered. Posters can set this to false after they create it.
-	title				= models.CharField(max_length=50, null=False, blank=False)
+	title				= models.CharField(max_length=200, null=False, blank=False)
 	body				= models.CharField(max_length=20000, null=False, blank=False)
 	image				= models.ImageField(upload_to=upload_location, null=False, blank=False)
 	date_published		= models.DateTimeField(auto_now_add=True, verbose_name="date published")
