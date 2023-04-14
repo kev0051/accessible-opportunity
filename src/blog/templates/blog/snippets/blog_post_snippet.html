@@ -1,14 +1,33 @@
 <style type="text/css">
 	.card{
-		max-width: 700px;
+		max-width: 500px;
 		width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
 	}
 	.card-body{
 		padding: 20px;
+        width: 60%;
 	}
+    .card-img-top{
+        width: 40%;
+        height: auto;
+    }
+    .card-title {
+		font-size: 16px;
+		font-weight: bold;
+		color: black;
+		width: 200px;
+	}
+	.btn-primary {
+        margin-right: 10px;
+    }
 </style>
 
 {% if blog_post %}
+
 <div class="container">
 	<div class="row">
 		<!-- Blog Post -->
@@ -17,25 +36,28 @@
 				<img class="card-img-top" src="{{blog_post.image.url}}">
 			</a>
 			<div class="card-body mt-2 mb-2">
-				<a href="{% url 'blog:detail' post.slug %}">
 					<h2 class="card-title">{{blog_post.title}}</h2>
-				</a>
-				<p class="card-text">{{blog_post.body|safe|truncatechars:180}}</p>
 				{% if blog_post.author == request.user %}
-					<a href="{% url 'blog:edit' blog_post.slug %}" class="btn btn-primary">Update</a>
-					<form method="POST" action="{% url 'blog:delete' blog_post.slug %}" style="display: inline;">
-						{% csrf_token %}
-						<input type="submit" class="btn btn-danger" value="Delete">
-					</form>
+					<div class="d-flex justify-content-end">
+                        <a href="{% url 'blog:edit' blog_post.slug %}" class="btn btn-primary">Update</a>
+    					<form method="POST" action="{% url 'blog:delete' blog_post.slug %}" style="display: inline;">
+    						{% csrf_token %}
+    						<input type="submit" class="btn btn-danger" value="Delete">
+    					</form>
+                    </div>
+				{% endif %}
+				{% if not request.user.is_poster %}
+				<a href="{% url 'blog:detail' post.slug %}">
+    				<button class="btn btn-primary">Read and Apply</button>
+    			</a>
 				{% endif %}
 			</div>
 			<div class="card-footer text-muted">
-			  Updated on {{blog_post.date_updated}} by {{blog_post.author}}
+			  {{ blog_post.get_disability_display }}
 			</div>
 		</div>
 	</div>
 </div>
-
 {% else %}
 
 <div class="container">
@@ -48,5 +70,4 @@
 		</div>
 	</div>
 </div>
-
 {% endif %}
