@@ -50,19 +50,15 @@ def pre_save_blog_post_receiver(sender, instance, *args, **kwargs):
 
 pre_save.connect(pre_save_blog_post_receiver, sender=BlogPost)
 
-@login_required
-def apply_job_view(request, pk):
-    post = get_object_or_404(BlogPost, pk=pk)
+class JobApplication(models.Model):
+    job_post = models.ForeignKey('blog.BlogPost', on_delete=models.CASCADE, related_name='job_applications')
+    applicant = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    resume = models.FileField(upload_to='resumes/')
+    cover_letter = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
 
-    if request.method == 'POST':
-        form = ApplyJobForm(request.POST, request.FILES)
-        if form.is_valid():
-            # do something with the form data
-            # for example, save it to a model object or send an email
-            # then redirect to a success page
-            messages.success(request, 'Your application has been submitted successfully!')
-            return redirect('detail_blog_view', slug=post.slug)
-    else:
-        form = ApplyJobForm()
+    def __str__(self):
+        return self.applicant.username
 
-    return render(request, 'blog/apply_job.html', {'form': form, 'post': post})
+    def get_absolute_url(self):
+        return reverse('blog:detail', args=[str(self.job_post.slug)])

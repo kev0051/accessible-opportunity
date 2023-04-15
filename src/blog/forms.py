@@ -1,6 +1,6 @@
 from django import forms
 
-from blog.models import BlogPost 
+from blog.models import BlogPost, JobApplication
 
 
 class CreateBlogPostForm(forms.ModelForm):

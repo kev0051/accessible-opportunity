@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.http import HttpResponse
 
-from blog.models import BlogPost
+from blog.models import BlogPost, JobApplication
 from blog.forms import CreateBlogPostForm, UpdateBlogPostForm, ApplyJobForm
 from account.models import Account
 
