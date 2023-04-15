@@ -61,7 +61,7 @@ def apply_job_view(request, pk):
             # for example, save it to a model object or send an email
             # then redirect to a success page
             messages.success(request, 'Your application has been submitted successfully!')
-            return redirect('blog_detail', pk=pk)
+            return redirect('detail_blog_view', slug=post.slug)
     else:
         form = ApplyJobForm()
 
