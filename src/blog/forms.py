@@ -27,3 +27,7 @@ class UpdateBlogPostForm(forms.ModelForm):
 		if commit:
 			blog_post.save()
 		return blog_post
+
+class ApplyJobForm(forms.Form):
+    resume = forms.FileField(label='Resume', required=True)
+    cover_letter = forms.CharField(widget=forms.Textarea, label='Cover letter', max_length=2000, required=True)

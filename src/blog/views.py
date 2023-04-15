@@ -3,9 +3,11 @@ from django.db.models import Q
 from django.http import HttpResponse
 
 from blog.models import BlogPost
-from blog.forms import CreateBlogPostForm, UpdateBlogPostForm
+from blog.forms import CreateBlogPostForm, UpdateBlogPostForm, ApplyJobForm
 from account.models import Account
 
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 def create_blog_view(request):
 
@@ -100,4 +102,21 @@ def delete_blog_view(request, slug):
     else:
         # Redirect to the blog post detail page
         return redirect('detail_blog_view', slug=slug)
+
+@login_required
+def apply_job_view(request, pk):
+    post = get_object_or_404(BlogPost, pk=pk)
+
+    if request.method == 'POST':
+        form = ApplyJobForm(request.POST, request.FILES)
+        if form.is_valid():
+            # do something with the form data
+            # for example, save it to a model object or send an email
+            # then redirect to a success page
+            messages.success(request, 'Your application has been submitted successfully!')
+            return redirect('blog_detail', pk=pk)
+    else:
+        form = ApplyJobForm()
+
+    return render(request, 'blog/apply_job.html', {'form': form, 'post': post})
 

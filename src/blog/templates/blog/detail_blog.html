@@ -30,7 +30,9 @@
 				</form>
 			  {% endif %}
 {% if not request.user.is_poster %}
-    <button class="btn btn-primary">Apply</button>
+<div class="form-group d-inline-block">
+     <a class="btn btn-lg btn-primary" href="{% url 'blog:apply' pk=blog_post.pk %}">Apply</a>
+ </div>
 {% endif %}
 			</div>
 			<div class="card-footer text-muted">
