@@ -110,11 +110,9 @@ def apply_job_view(request, pk):
     if request.method == 'POST':
         form = ApplyJobForm(request.POST, request.FILES)
         if form.is_valid():
-            # do something with the form data
-            # for example, save it to a model object or send an email
-            # then redirect to a success page
+            application = form.save(job_post=post, applicant=request.user)
             messages.success(request, 'Your application has been submitted successfully!')
-            return redirect('blog:detail', slug=post.slug)  # update this line
+            return redirect('blog:detail', slug=post.slug)
     else:
         form = ApplyJobForm()
 

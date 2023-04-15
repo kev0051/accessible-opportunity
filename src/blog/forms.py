@@ -28,6 +28,14 @@ class UpdateBlogPostForm(forms.ModelForm):
 			blog_post.save()
 		return blog_post
 
-class ApplyJobForm(forms.Form):
-    resume = forms.FileField(label='Resume', required=True)
-    cover_letter = forms.CharField(widget=forms.Textarea, label='Cover letter', max_length=2000, required=True)
+class ApplyJobForm(forms.ModelForm):
+    class Meta:
+        model = JobApplication
+        fields = ['resume', 'cover_letter']
+
+    def save(self, job_post, applicant):
+        application = super().save(commit=False)
+        application.job_post = job_post
+        application.applicant = applicant
+        application.save()
+        return application
