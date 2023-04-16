@@ -9,6 +9,7 @@ from account.models import Account
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
+from django.urls import reverse
 
 def create_blog_view(request):
 
@@ -129,3 +130,10 @@ def evaluate_view(request, pk):
         'date_applied': [app.date_applied for app in job_applications],
     }
     return render(request, 'blog/view_job_applications.html', context)
+
+def cover_letter_view(request, job_application_id):
+    job_application = get_object_or_404(JobApplication, pk=job_application_id)
+    context = {
+        'job_application': job_application,
+    }
+    return render(request, 'blog/view_cover_letters.html', context)
