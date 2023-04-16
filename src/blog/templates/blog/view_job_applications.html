@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Job Applications for "{{ job_post.title }}"</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Applicant</th>
+        <th scope="col">Resume</th>
+        <th scope="col">Cover Letter</th>
+        <th scope="col">Date Applied</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for job_application in job_applications %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ job_application.applicant }}</td>
+          <td><a href="{{ job_application.resume.url }}">{{ job_application.resume.name }}</a></td>
+          <td>{{ job_application.cover_letter }}</td>
+          <td>{{ job_application.date_applied|date:"F d, Y h:i A e" }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No job applications have been submitted for this post yet.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -28,6 +28,7 @@
 						{% csrf_token %}
 						<input type="submit" class="btn btn-danger" value="Delete">
 				</form>
+				<a href="{% url 'blog:evaluate' pk=blog_post.pk %}" class="btn btn-success">View Submissions</a>
 			  {% endif %}
 {% if not request.user.is_poster %}
 <div class="form-group d-inline-block">
