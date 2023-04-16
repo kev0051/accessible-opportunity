@@ -7,6 +7,7 @@ from blog.forms import CreateBlogPostForm, UpdateBlogPostForm, ApplyJobForm
 from account.models import Account
 
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import never_cache
 from django.contrib import messages
 
 def create_blog_view(request):
@@ -104,6 +105,7 @@ def delete_blog_view(request, slug):
         return redirect('detail_blog_view', slug=slug)
 
 @login_required
+@never_cache
 def apply_job_view(request, pk):
     post = get_object_or_404(BlogPost, pk=pk)
 
@@ -117,3 +119,13 @@ def apply_job_view(request, pk):
         form = ApplyJobForm()
 
     return render(request, 'blog/apply_job.html', {'form': form, 'post': post})
+
+def evaluate_view(request, pk):
+    job_post = get_object_or_404(BlogPost, pk=pk)
+    job_applications = JobApplication.objects.filter(job_post=job_post)
+    context = {
+        'job_post': job_post,
+        'job_applications': job_applications,
+        'date_applied': [app.date_applied for app in job_applications],
+    }
+    return render(request, 'blog/view_job_applications.html', context)

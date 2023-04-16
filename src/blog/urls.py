@@ -5,6 +5,7 @@ from blog.views import (
 	edit_blog_view,
     delete_blog_view,
     apply_job_view,
+    evaluate_view,
 )
 
 app_name = 'blog'
@@ -15,4 +16,6 @@ urlpatterns = [
     path('<slug>/edit/', edit_blog_view, name="edit"),
     path('<slug>/delete/', delete_blog_view, name="delete"),
     path('apply_job_view/<int:pk>', apply_job_view, name="apply"),
+    path('evaluate_view/<int:pk>/', evaluate_view, name="evaluate"),
+
  ]

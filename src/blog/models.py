@@ -55,7 +55,7 @@ class JobApplication(models.Model):
     applicant = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     resume = models.FileField(upload_to='resumes/')
     cover_letter = models.TextField()
-    created_date = models.DateTimeField(auto_now_add=True)
+    date_applied = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.applicant.username
